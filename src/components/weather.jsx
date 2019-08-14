@@ -14,7 +14,7 @@ class Weather extends React.Component {
   componentDidMount() {
     fetch('https://api.openweathermap.org/data/2.5/forecast?q=London,uk&units=imperial&APPID=83b3abcf3df058e692a4697bf517eae1')
       .then(res => res.json())
-      // .then(res => console.log(res.list))
+      // .then(res => console.log(res.list[0].dt))
       .then(res => {
         this.setState({
           city: res.city.name,
@@ -28,12 +28,18 @@ class Weather extends React.Component {
     if (!this.state.city) return <p>Loading ...</p>
 
     let forecast = this.state.forecast.map((fcast, i) => {
+      let date = new Date(fcast.dt * 1000).toString().split(" ").slice(1, 3)
+      let time = new Date(fcast.dt * 1000).toString().split(" ").slice(4, 5)
+      // let date = new Date(fcast.dt * 1000).toString()
+      console.log(date)
       return (
         <li key={i} className="fcast">
+          <p>{date}</p>
+          <p>{time}</p>
           <p>{fcast.weather[0].main}</p>
           <p>{fcast.weather[0].description}</p>
-          <p>{fcast.main.temp_min}</p>
-          <p>{fcast.main.temp_max}</p>
+          <p>{`Min: ${fcast.main.temp_min} F`}</p>
+          <p>{`Max: ${fcast.main.temp_max} F`}</p>
         </li>
       )
     })

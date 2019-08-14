@@ -13,4 +13,9 @@
   justify-content: center;
   border: 1px solid grey;
   border-radius: 20px;
+  margin: 10px;
+}
+
+p {
+  margin: 5px;
 }
