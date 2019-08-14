@@ -1,0 +1,16 @@
+.forecast-ul {
+  list-style: none;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+  height: 1000px;
+}
+
+.fcast {
+  width: 200px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  border: 1px solid grey;
+  border-radius: 20px;
+}
